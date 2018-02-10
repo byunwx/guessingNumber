@@ -30,7 +30,7 @@
             <span id="pickMessage"></span><br>
           </div>
 
-
+          <div id="resetPlacement"></div>
         </div>
 
 
@@ -64,6 +64,18 @@ var userPick="";
 var otherPick="";
 var lowest = 0;
 var highest =limit
+//////
+function makeReset(){
+$("#resetPlacement").html("<div><button id='resetBtn' class='btn bg-red btn-lg'>Reset</button></div>");
+
+  document.getElementById("resetBtn").onclick = function (){
+    // var function settingMaker(){
+          newGame();
+
+        };
+
+}
+////////
 
 function newGame(){
   $("#settingBtnDiv").html("<button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button>");
@@ -122,6 +134,7 @@ function startNewGame(){
                         document.getElementById("gamePick").value="";
                         highest=otherPick;
                         lowest=otherPick;
+                        makeReset();
                       }
                       else{
                         document.getElementById("message").innerHTML = "ARE YOU STPUID!?";
@@ -133,6 +146,7 @@ function startNewGame(){
             document.getElementById("pickMessage").innerHTML = "ARE YOU STPUID!? ONLY NUMBERS BIGGER THAN 0!! AND SMALLER THAN LIMIT";
           }
 }
+
 // setting
 document.getElementById("settingBtn").onclick = function (){
 // var function settingMaker(){
