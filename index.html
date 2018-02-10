@@ -22,7 +22,7 @@
             <button id="settingBtn" class='btn bg-primary btn-lg'>To change the limit</button>
           </div>
           <br><br><br>
-          limit is: 0 to <span id="LIMIT"></span>
+          <h2>limit is: 0 to <span id="LIMIT"></span></h2>
           <div class="col-md-12" id="game">
             <h2>Please enter the Number to Start the Game</h2>
             <input id="userPickInput" placeholder="Number ONLY!" /><br>
@@ -80,7 +80,23 @@ $("#resetPlacement").html("<div><button id='resetBtn' class='btn bg-red btn-lg'>
 function newGame(){
   $("#settingBtnDiv").html("<button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button>");
   $("#gameRow").empty();
-  $("#gameRow").html("<div id='settingBtnDiv'><button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button></div><br><br><br>limit is: <span id='LIMIT'></span><div class='col-md-12' id='game'><h2>Please enter the Number to Start the Game</h2><input id='userPickInput' placeholder='Number ONLY!'' /><br><button id='confirmPick' class='btn bg-primary btn-lg'>I will Pick this Number!</button><span id='pickMessage'></span><br></div>);")
+  $("#gameRow").html("<div id='settingBtnDiv'><button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button></div><br><br><br><h2>limit is: <span id='LIMIT'></span></h2><div class='col-md-12' id='game'><h2>Please enter the Number to Start the Game</h2><input id='userPickInput' placeholder='Number ONLY!'' /><br><button id='confirmPick' class='btn bg-primary btn-lg'>I will Pick this Number!</button><span id='pickMessage'></span><br></div><div id='resetPlacement'></div>")
+  limit = 100;
+  userPick="";
+  otherPick="";
+  lowest = 0;
+  highest =limit
+  document.getElementById("LIMIT").innerHTML = limit;
+  document.getElementById("settingBtn").onclick = function (){
+  // var function settingMaker(){
+        settingMaking();
+
+      };
+
+
+  document.getElementById("confirmPick").onclick = function () {
+        startNewGame();
+      };
 }
 
 document.getElementById("LIMIT").innerHTML = limit;
@@ -128,12 +144,12 @@ function startNewGame(){
                         highest=otherPick;
                       }else
                       if(otherPick===userPick){
+
                         document.getElementById("outPut").innerHTML = otherPick;
                         document.getElementById('outPut').style.color = 'yellow';
                         document.getElementById("message").innerHTML = "You Won!! press RESET to restart";
                         document.getElementById("gamePick").value="";
-                        highest=otherPick;
-                        lowest=otherPick;
+
                         makeReset();
                       }
                       else{
