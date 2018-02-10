@@ -80,10 +80,19 @@ body {
    border-color: yellow;
    margin: auto;
    padding: 10%;
+   font-size: 35px;
+ }
+ h1{
+   color: green;
+   margin-bottom: 50px;
+ }
+ #LIMIT{
+   font-size: 50px;
+   color: red;
  }
  #message{
-   font-size: 30px;
+   font-size: 50px;
  }
  #outPut{
-   font-size: 50px;
+   font-size: 90px;
  }

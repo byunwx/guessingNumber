@@ -11,6 +11,7 @@
     <div class="page-wrap">
       <div class="container">
         <h1>Guessing the Number Game!!</h1>
+
         <div class="row">
           <div class="col-md-12" id="setting">
 
@@ -18,14 +19,14 @@
         </div>
         <div class="row" id="gameRow">
           <div id="settingBtnDiv">
-            <button id="settingBtn">SETTING</button>
+            <button id="settingBtn" class='btn bg-primary btn-lg'>SETTING</button>
           </div>
           <br><br><br>
-          <h4>limit is:</h4><span id="LIMIT"></span>
+          limit is: <span id="LIMIT"></span>
           <div class="col-md-12" id="game">
-
+            <h2>Please enter the Number to Start the Game</h2>
             <input id="userPickInput" placeholder="Number ONLY!" /><br>
-            <button id="confirmPick">I will Pick this Number!</button>
+            <button id="confirmPick" class="btn bg-primary btn-lg">I will Pick this Number!</button>
             <span id="pickMessage"></span><br>
           </div>
 
@@ -74,7 +75,7 @@ for (var i = 0; i < limit; i++) {
 // setting
 document.getElementById("settingBtn").onclick = function (){
 // var function settingMaker(){
-        $("#setting").html("<input id='limitInput' placeholder='Set your limit'><button id='confirm'>Confirm</button><span id='settingMessage'></span>");
+        $("#setting").html("<input id='limitInput' placeholder='Set your limit'><button id='confirm' class='btn bg-primary btn-lg'>Confirm</button><span id='settingMessage'></span>");
         document.getElementById("confirm").onclick = function () {
                 limit=document.getElementById("limitInput").value;
                 highest =limit
@@ -96,7 +97,7 @@ document.getElementById("confirmPick").onclick = function () {
             $("#game").empty();
             $("#settingBtnDiv").empty();
             $("#setting").empty();
-            $("#game").html("<span id='outPut'></span>Pick!<br><span id='message'></span><br><input id='gamePick' placeholder='Number ONLY!' /><br><br><br><br><br><button id='confirmGamePick'>I will Pick this Number!</button>");
+            $("#game").html("<span id='outPut'></span>Pick!<br><span id='message'></span><br><input id='gamePick' placeholder='Number ONLY!' /><br><br><br><br><button id='confirmGamePick' class='btn bg-primary btn-lg'>I will Pick this Number!</button>");
             highest =limit;
             lowest =0;
             document.getElementById("confirmGamePick").onclick = function () {
@@ -120,6 +121,8 @@ document.getElementById("confirmPick").onclick = function () {
                       document.getElementById('outPut').style.color = 'yellow';
                       document.getElementById("message").innerHTML = "You Won!!";
                       document.getElementById("gamePick").value="";
+                      highest=otherPick;
+                      lowest=otherPick;
                     }
                     else{
                       document.getElementById("message").innerHTML = "ARE YOU STPUID!?";
