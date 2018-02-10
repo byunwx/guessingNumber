@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <title></title>
+    <title>byunwx: Guess the Number</title>
   </head>
   <body>
     <div class="page-wrap">
@@ -19,7 +19,7 @@
         </div>
         <div class="row" id="gameRow">
           <div id="settingBtnDiv">
-            <button id="settingBtn" class='btn bg-primary btn-lg'>SETTING</button>
+            <button id="settingBtn" class='btn bg-primary btn-lg'>To change the limit</button>
           </div>
           <br><br><br>
           limit is: <span id="LIMIT"></span>
@@ -75,7 +75,7 @@ for (var i = 0; i < limit; i++) {
 // setting
 document.getElementById("settingBtn").onclick = function (){
 // var function settingMaker(){
-        $("#setting").html("<input id='limitInput' placeholder='Set your limit'><button id='confirm' class='btn bg-primary btn-lg'>Confirm</button><span id='settingMessage'></span>");
+        $("#setting").html("<h4>You must set the limit and press confirm to start</h4><input id='limitInput' placeholder='Set your limit'><br><button id='confirm' class='btn bg-red btn-lg'>Confirm</button><br><span id='settingMessage'></span>");
         document.getElementById("confirm").onclick = function () {
                 limit=document.getElementById("limitInput").value;
                 highest =limit

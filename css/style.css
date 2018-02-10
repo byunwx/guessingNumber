@@ -72,7 +72,10 @@ body {
  .box3:hover{
    background-image: url("../images/icons/stack.png");
  }
-
+.bg-red{
+  background-color: red!important;
+  color:white!important;
+}
 
  .container{
    text-align: center;
