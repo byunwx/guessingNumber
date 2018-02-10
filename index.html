@@ -24,7 +24,7 @@
           <br><br><br>
           <h2>limit is: 0 to <span id="LIMIT"></span></h2>
           <div class="col-md-12" id="game">
-            <h2>Please enter the Number to Start the Game</h2>
+            <h2>You Pick the Number and Other player guess the the Number</h2>
             <input id="userPickInput" placeholder="Number ONLY!" /><br>
             <button id="confirmPick" class="btn bg-primary btn-lg">I will Pick this Number!</button>
             <span id="pickMessage"></span><br>
@@ -80,7 +80,7 @@ $("#resetPlacement").html("<div><button id='resetBtn' class='btn bg-red btn-lg'>
 function newGame(){
   $("#settingBtnDiv").html("<button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button>");
   $("#gameRow").empty();
-  $("#gameRow").html("<div id='settingBtnDiv'><button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button></div><br><br><br><h2>limit is: <span id='LIMIT'></span></h2><div class='col-md-12' id='game'><h2>Please enter the Number to Start the Game</h2><input id='userPickInput' placeholder='Number ONLY!'' /><br><button id='confirmPick' class='btn bg-primary btn-lg'>I will Pick this Number!</button><span id='pickMessage'></span><br></div><div id='resetPlacement'></div>")
+  $("#gameRow").html("<div id='settingBtnDiv'><button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button></div><br><br><br><h2>limit is: <span id='LIMIT'></span></h2><div class='col-md-12' id='game'><h2>You Pick the Number and Other player guess the the Number</h2><input id='userPickInput' placeholder='Number ONLY!'' /><br><button id='confirmPick' class='btn bg-primary btn-lg'>I will Pick this Number!</button><span id='pickMessage'></span><br></div><div id='resetPlacement'></div>")
   limit = 100;
   userPick="";
   otherPick="";
@@ -117,13 +117,13 @@ function settingMaking(){
 }
 
 function startNewGame(){
-
           userPick=document.getElementById("userPickInput").value;
           if(userPick>0 && userPick<limit ){
               $("#game").empty();
               $("#settingBtnDiv").empty();
               $("#setting").empty();
-              $("#game").html("<span id='outPut'></span>Pick!<br><span id='message'></span><br><input id='gamePick' placeholder='Number ONLY!' /><br><br><br><br><button id='confirmGamePick' class='btn bg-primary btn-lg'>I will Pick this Number!</button>");
+              $("#game").html("<span id='outPut'></span>Pick!<br><span id='message'></span><br><div id='gameinput'><input id='gamePick' placeholder='Number ONLY!' /><br><br><br><br><button id='confirmGamePick' class='btn bg-primary btn-lg'>I will Pick this Number!</button></div>");
+              document.getElementById('message').style.color = 'gray';
               highest =limit;
               lowest =0;
               document.getElementById("outPut").innerHTML = "Pass it to the other player<br>";
@@ -148,7 +148,9 @@ function startNewGame(){
                         document.getElementById("outPut").innerHTML = otherPick;
                         document.getElementById('outPut').style.color = 'yellow';
                         document.getElementById("message").innerHTML = "You Won!! press RESET to restart";
+                        document.getElementById('message').style.color = 'yellow';
                         document.getElementById("gamePick").value="";
+                        $("#gameinput").empty();
 
                         makeReset();
                       }
