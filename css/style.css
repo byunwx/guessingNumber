@@ -78,11 +78,12 @@ body {
 }
 
  .container{
+
+   padding-top: 20px;
    text-align: center;
    border: dotted 5px;
    border-color: yellow;
    margin: auto;
-   padding: 10%;
    font-size: 35px;
  }
  h1{

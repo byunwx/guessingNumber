@@ -65,72 +65,84 @@ var otherPick="";
 var lowest = 0;
 var highest =limit
 
+function newGame(){
+  $("#settingBtnDiv").html("<button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button>");
+  $("#gameRow").empty();
+  $("#gameRow").html("<div id='settingBtnDiv'><button id='settingBtn' class='btn bg-primary btn-lg'>To change the limit</button></div><br><br><br>limit is: <span id='LIMIT'></span><div class='col-md-12' id='game'><h2>Please enter the Number to Start the Game</h2><input id='userPickInput' placeholder='Number ONLY!'' /><br><button id='confirmPick' class='btn bg-primary btn-lg'>I will Pick this Number!</button><span id='pickMessage'></span><br></div>);")
+}
 
 document.getElementById("LIMIT").innerHTML = limit;
 
+function settingMaking(){
+  $("#setting").html("<h4>You must set the limit and press confirm to start</h4><input id='limitInput' placeholder='Set your limit'><br><button id='confirm' class='btn bg-red btn-lg'>Confirm</button><br><span id='settingMessage'></span>");
+  document.getElementById("confirm").onclick = function () {
+          limit=document.getElementById("limitInput").value;
+          highest =limit
+          if(limit>0){
+              $("#setting").empty();
+              document.getElementById("LIMIT").innerHTML = limit;
 
+          }else{
+            document.getElementById("settingMessage").innerHTML = "ARE YOU STPUID!? ONLY NUMBERS BIGGER THAN 0!!";
+          }
+      };
+}
+
+function startNewGame(){
+
+          userPick=document.getElementById("userPickInput").value;
+          if(userPick>0 && userPick<limit ){
+              $("#game").empty();
+              $("#settingBtnDiv").empty();
+              $("#setting").empty();
+              $("#game").html("<span id='outPut'></span>Pick!<br><span id='message'></span><br><input id='gamePick' placeholder='Number ONLY!' /><br><br><br><br><button id='confirmGamePick' class='btn bg-primary btn-lg'>I will Pick this Number!</button>");
+              highest =limit;
+              lowest =0;
+              document.getElementById("outPut").innerHTML = "Pass it to the other player<br>";
+              document.getElementById("confirmGamePick").onclick = function () {
+                      otherPick=document.getElementById("gamePick").value;
+
+                      if(otherPick>lowest && otherPick<highest && otherPick<userPick){
+                        document.getElementById("outPut").innerHTML = otherPick;
+                        document.getElementById('outPut').style.color = 'green';
+                        document.getElementById("message").innerHTML = "Higher";
+                        document.getElementById("gamePick").value="";
+                        lowest=otherPick;
+                      }else if(otherPick>lowest && otherPick<highest && otherPick>userPick){
+                        document.getElementById("outPut").innerHTML = otherPick;
+                        document.getElementById('outPut').style.color = 'red';
+                        document.getElementById("message").innerHTML = "Lower";
+                        document.getElementById("gamePick").value="";
+                        highest=otherPick;
+                      }else
+                      if(otherPick===userPick){
+                        document.getElementById("outPut").innerHTML = otherPick;
+                        document.getElementById('outPut').style.color = 'yellow';
+                        document.getElementById("message").innerHTML = "You Won!! refresh to restart";
+                        document.getElementById("gamePick").value="";
+                        highest=otherPick;
+                        lowest=otherPick;
+                      }
+                      else{
+                        document.getElementById("message").innerHTML = "ARE YOU STPUID!?";
+                        document.getElementById('outPut').style.color = 'orange';
+                        document.getElementById("gamePick").value="";
+                          }
+                      };
+          }else{
+            document.getElementById("pickMessage").innerHTML = "ARE YOU STPUID!? ONLY NUMBERS BIGGER THAN 0!! AND SMALLER THAN LIMIT";
+          }
+}
 // setting
 document.getElementById("settingBtn").onclick = function (){
 // var function settingMaker(){
-        $("#setting").html("<h4>You must set the limit and press confirm to start</h4><input id='limitInput' placeholder='Set your limit'><br><button id='confirm' class='btn bg-red btn-lg'>Confirm</button><br><span id='settingMessage'></span>");
-        document.getElementById("confirm").onclick = function () {
-                limit=document.getElementById("limitInput").value;
-                highest =limit
-                if(limit>0){
-                    $("#setting").empty();
-                    document.getElementById("LIMIT").innerHTML = limit;
-
-                }else{
-                  document.getElementById("settingMessage").innerHTML = "ARE YOU STPUID!? ONLY NUMBERS BIGGER THAN 0!!";
-                }
-            };
+      settingMaking();
 
     };
 
 
 document.getElementById("confirmPick").onclick = function () {
-        userPick=document.getElementById("userPickInput").value;
-        if(userPick>0 && userPick<limit ){
-            $("#game").empty();
-            $("#settingBtnDiv").empty();
-            $("#setting").empty();
-            $("#game").html("<span id='outPut'></span>Pick!<br><span id='message'></span><br><input id='gamePick' placeholder='Number ONLY!' /><br><br><br><br><button id='confirmGamePick' class='btn bg-primary btn-lg'>I will Pick this Number!</button>");
-            highest =limit;
-            lowest =0;
-            document.getElementById("outPut").innerHTML = "Pass it to the other player<br>";
-            document.getElementById("confirmGamePick").onclick = function () {
-                    otherPick=document.getElementById("gamePick").value;
-
-                    if(otherPick>lowest && otherPick<highest && otherPick<userPick){
-                      document.getElementById("outPut").innerHTML = otherPick;
-                      document.getElementById('outPut').style.color = 'green';
-                      document.getElementById("message").innerHTML = "Higher";
-                      document.getElementById("gamePick").value="";
-                      lowest=otherPick;
-                    }else if(otherPick>lowest && otherPick<highest && otherPick>userPick){
-                      document.getElementById("outPut").innerHTML = otherPick;
-                      document.getElementById('outPut').style.color = 'red';
-                      document.getElementById("message").innerHTML = "Lower";
-                      document.getElementById("gamePick").value="";
-                      highest=otherPick;
-                    }else
-                    if(otherPick===userPick){
-                      document.getElementById("outPut").innerHTML = otherPick;
-                      document.getElementById('outPut').style.color = 'yellow';
-                      document.getElementById("message").innerHTML = "You Won!! refresh to restart";
-                      document.getElementById("gamePick").value="";
-                      highest=otherPick;
-                      lowest=otherPick;
-                    }
-                    else{
-                      document.getElementById("message").innerHTML = "ARE YOU STPUID!?";
-                      document.getElementById('outPut').style.color = 'orange';
-                      document.getElementById("gamePick").value="";
-                        }
-                    };
-        }else{
-          document.getElementById("pickMessage").innerHTML = "ARE YOU STPUID!? ONLY NUMBERS BIGGER THAN 0!! AND SMALLER THAN LIMIT";
-        }
+      startNewGame();
     };
 
 
