@@ -97,6 +97,7 @@ document.getElementById("confirmPick").onclick = function () {
             $("#game").html("<span id='outPut'></span>Pick!<br><span id='message'></span><br><input id='gamePick' placeholder='Number ONLY!' /><br><br><br><br><button id='confirmGamePick' class='btn bg-primary btn-lg'>I will Pick this Number!</button>");
             highest =limit;
             lowest =0;
+            document.getElementById("outPut").innerHTML = "Pass it to the other player<br>";
             document.getElementById("confirmGamePick").onclick = function () {
                     otherPick=document.getElementById("gamePick").value;
 
