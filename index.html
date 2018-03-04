@@ -84,8 +84,8 @@ function newGame(){
   limit = 100;
   userPick="";
   otherPick="";
-  lowest = -1;
-  highest =limit+1;
+  lowest = 0;
+  highest =limit;
   document.getElementById("LIMIT").innerHTML = limit;
   document.getElementById("settingBtn").onclick = function (){
   // var function settingMaker(){
@@ -105,7 +105,7 @@ function settingMaking(){
   $("#setting").html("<h4>You must set the limit and press confirm to start</h4><input id='limitInput' placeholder='Set your limit'><br><button id='confirm' class='btn bg-red btn-lg'>Confirm</button><br><span id='settingMessage'></span>");
   document.getElementById("confirm").onclick = function () {
           limit=document.getElementById("limitInput").value;
-          highest =limit+1;
+          highest =limit;
           if(limit>0){
               $("#setting").empty();
               document.getElementById("LIMIT").innerHTML = limit;
