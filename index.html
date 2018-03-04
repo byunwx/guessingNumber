@@ -84,8 +84,8 @@ function newGame(){
   limit = 100;
   userPick="";
   otherPick="";
-  lowest = 0;
-  highest =limit
+  lowest = -1;
+  highest =limit+1;
   document.getElementById("LIMIT").innerHTML = limit;
   document.getElementById("settingBtn").onclick = function (){
   // var function settingMaker(){
@@ -105,13 +105,13 @@ function settingMaking(){
   $("#setting").html("<h4>You must set the limit and press confirm to start</h4><input id='limitInput' placeholder='Set your limit'><br><button id='confirm' class='btn bg-red btn-lg'>Confirm</button><br><span id='settingMessage'></span>");
   document.getElementById("confirm").onclick = function () {
           limit=document.getElementById("limitInput").value;
-          highest =limit
+          highest =limit+1;
           if(limit>0){
               $("#setting").empty();
               document.getElementById("LIMIT").innerHTML = limit;
 
           }else{
-            document.getElementById("settingMessage").innerHTML = "ARE YOU STPUID!? ONLY NUMBERS BIGGER THAN 0!!";
+            document.getElementById("settingMessage").innerHTML = "NUMBERS BIGGER THAN 0!!";
           }
       };
 }
@@ -155,13 +155,13 @@ function startNewGame(){
                         makeReset();
                       }
                       else{
-                        document.getElementById("message").innerHTML = "ARE YOU STPUID!?";
+                        document.getElementById("message").innerHTML = "Try again: wrong range";
                         document.getElementById('outPut').style.color = 'orange';
                         document.getElementById("gamePick").value="";
                           }
                       };
           }else{
-            document.getElementById("pickMessage").innerHTML = "ARE YOU STPUID!? ONLY NUMBERS BIGGER THAN 0!! AND SMALLER THAN LIMIT";
+            document.getElementById("pickMessage").innerHTML = "pick a NUMBER between 0 and LIMIT";
           }
 }
 
